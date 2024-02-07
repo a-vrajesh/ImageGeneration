@@ -1,5 +1,5 @@
-!pip install flask
-!pip install diffusers
+#!pip install flask
+#!pip install diffusers
 
 from flask import Flask, request, send_file, render_template
 import io
