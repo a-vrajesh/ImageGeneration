@@ -1,3 +1,6 @@
+!pip install flask
+!pip install diffusers
+
 from flask import Flask, request, send_file, render_template
 import io
 from diffusers import AutoPipelineForText2Image
