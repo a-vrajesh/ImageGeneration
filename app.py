@@ -10,8 +10,10 @@ app = Flask(__name__)
 
 # Initialize the model
 model_id1 = "dataautogpt3/OpenDalleV1.1"
-pipe = AutoPipelineForText2Image.from_pretrained(model_id1, torch_dtype=torch.float16)
-pipe = pipe.to("cuda")
+#pipe = AutoPipelineForText2Image.from_pretrained(model_id1, torch_dtype=torch.float16)
+pipe = AutoPipelineForText2Image.from_pretrained(model_id1, torch_dtype=torch.float32)
+
+pipe = pipe.to("cpu")
 
 def generate_image_function(prompt):
     image = pipe(prompt=prompt).images[0]
@@ -48,4 +50,4 @@ def generate_image():
         return {"error": str(e)}, 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
